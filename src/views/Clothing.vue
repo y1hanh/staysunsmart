@@ -8,4 +8,8 @@
             Click here to read more.
         </a>
     </div>
-    </template>1
+<<<<<<< HEAD
+    
+=======
+    </template>
+>>>>>>> project1.1
