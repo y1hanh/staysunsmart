@@ -9,7 +9,7 @@ const selectSkinType = (skinType) => {
 </script>
 
 <template>
-  g
+  <div class="page-content">
     <h1>Personalisation</h1>
     <p>Please select the skin color you're interested in.</p>
 

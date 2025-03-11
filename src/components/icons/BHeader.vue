@@ -6,6 +6,7 @@
       <RouterLink to="/impact">UV Impact</RouterLink>
       <RouterLink to="/personalisation">Personalisation</RouterLink>
       <RouterLink to="/clothing">Clothing</RouterLink>
+      <RouterLink to="/subscribe">Subscribe</RouterLink>
     </nav>
   </header>
 </template>
