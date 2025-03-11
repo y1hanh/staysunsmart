@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { Loader } from '@googlemaps/js-api-loader';
+import { convertHeatData } from '@/util/convertHeatData'
 
 const message = ref('Here is all you need to know.')
 const loader = new Loader({
@@ -20,17 +21,10 @@ const mapOptions = {
 
 let map = ref(null);
 loader.load()
-  .then((google) => {
-    var heatmapData = [
-      new google.maps.LatLng(-37.782, 145.1275),
-      new google.maps.LatLng(-37.782, 145.2),
-      new google.maps.LatLng(-37.782, 145.3),
-      new google.maps.LatLng(-37.782, 145.01),
-      new google.maps.LatLng(-37.782, 145.4),
-      new google.maps.LatLng(-37.782, 145.8),
-      new google.maps.LatLng(-37.782, 144.8),
-    ];
-
+  .then(async (google) => {
+    console.log(11)
+    var heatmapData = await convertHeatData(google.maps.LatLng)
+    console.log(heatmapData)
     map.value = new google.maps.Map(document.getElementById("map"), mapOptions);
     var heatmap = new google.maps.visualization.HeatmapLayer({
       data: heatmapData
