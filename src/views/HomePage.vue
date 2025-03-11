@@ -1,14 +1,12 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import { Loader } from '@googlemaps/js-api-loader';
 
 const API_KEY = "0f2ce572252f4ef9ba455535251103"
 
-let map = ref(null);
-
-async function fetchUV(lat, lng) {
-  if(!lat || !lng) return null;
-    try {
+async function fetchUV({ lat, lng }) {
+  if (!lat || !lng) return null;
+  try {
     const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${lat},${lng}&aqi=yes`);
     const data = await response.json();
     if (data && data["current"]["uv"] !== undefined) {
@@ -21,58 +19,106 @@ async function fetchUV(lat, lng) {
 }
 
 const loader = new Loader({
-  apiKey: "AIzaSyDfAbRiEWwIZa32G7UGOkVfMiwzoFwR_eQ",
+  apiKey: "AIzaSyA1prceGY78lJr2Kgj0zwMP0ghLpLYt-eQ",
   version: "weekly",
   libraries: ["visualization"]
 });
-
-const userLat = ref(null);
-const userLng = ref(null);
-const mapOptions = {
-  center: {
-    lat: userLat.value? userLat.value : -37.9145,
-    lng: userLng.value? userLng.value : 145.1275
-  },
-  zoom: 12
-};
+const melbourne = { lat: -37.8136, lng: 144.9631 }
+const currentLocation = ref(null);
+const userUV = ref(null);
+const map = ref(null);
 
 
-
-const userUV = ref(null)
-onMounted(async ()=> {
+async function initMap() {
+  const { Map } = await loader.importLibrary("maps");
+  map.value = new Map(document.getElementById("map"), {
+    center: melbourne,
+    zoom: 13,
+  });
+  // show user's location
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        userLat.value = position.coords.latitude;
-        userLng.value = position.coords.longitude;
-      }
-    )
+    navigator.geolocation.getCurrentPosition(function (position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      currentLocation.value = pos
+      map.value.setCenter(pos);
+    });
   }
+}
 
-  if(userLat.value && userLng.value) {
-    userUV.value = await fetchUV(userLat.value, userLng.value)
-  }
+async function initAutocomplete() {
+  const { SearchBox } = await loader.importLibrary("places");
+  const { AdvancedMarkerElement } = await loader.importLibrary("marker");
+  const { LatLngBounds } = await loader.importLibrary("core");
+
+  const input = document.getElementById("pac-input");
+
+  const searchBox = new SearchBox(input);
+
+  map.value.addListener("bounds_changed", () => {
+    searchBox.setBounds(map.value.getBounds());
+  });
+
+  let markers = [];
+
+  searchBox.addListener("places_changed", () => {
+    const places = searchBox.getPlaces();
+    if (places.length == 0) {
+      return;
+    }
+
+    // Clear out the old markers.
+    markers.forEach((marker) => marker.setMap(null));
+    markers = [];
+
+    const bounds = new LatLngBounds();
+
+    places.forEach((place) => {
+      if (!place.geometry || !place.geometry.location) {
+        console.log("Returned place contains no geometry");
+        return;
+      }
+
+      const marker = new AdvancedMarkerElement({
+        map,
+        position: place.geometry.location,
+        title: place.name,
+      });
+
+      markers.push(marker);
+
+      if (place.geometry.viewport) {
+        bounds.union(place.geometry.viewport);
+      } else {
+        bounds.extend(place.geometry.location);
+      }
+    });
+
+    map.value.fitBounds(bounds);
+  });
+}
+
+watch(currentLocation, async () => {
+  userUV.value = await fetchUV(currentLocation.value)
 })
 
+window.initAutocomplete = initAutocomplete;
 
-loader.load()
-  .then(async (google) => {
-    map.value = new google.maps.Map(document.getElementById("map"), mapOptions);
-  })
-  .catch(e => {
-    console.log(e)
-  });
+onMounted(() => {
+  initMap();
+  initAutocomplete()
+});
+
 </script>
 
 <template>
   <div>
-    <h1>Skin Protection</h1>
-    <div class="d-flex p-2">
-    <div id="map" style="width: 500px; height:500px"></div>
-    <div>user UV: {{ userUV }}</div>
+    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+    <div id="map" style="height: 400px; width: 100%;" />
+    <div>userUV: {{ userUV }}</div>
   </div>
-  </div>
-
 </template>
 
 <style scoped></style>
