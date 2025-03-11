@@ -5,6 +5,7 @@
       <RouterLink to="/uvindex">UV Index</RouterLink>
       <RouterLink to="/impact">UV Impact</RouterLink>
       <RouterLink to="/personalisation">Personalisation</RouterLink>
+      <RouterLink to="/clothing">Clothing</RouterLink>
     </nav>
   </header>
 </template>
