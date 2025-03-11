@@ -114,10 +114,15 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
-    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-    <div id="map" style="height: 400px; width: 100%;" />
-    <div>userUV: {{ userUV }}</div>
+  <div class="d-flex">
+    <div>
+      <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+      <div id="map" style="height: 60vh; width: 70vh;" />
+    </div>
+    <div>
+      <div>Your location UV</div>
+      <div>UV: {{ userUV }}</div>
+    </div>
   </div>
 </template>
 
