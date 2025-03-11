@@ -19,7 +19,7 @@ async function fetchUV({ lat, lng }) {
 }
 
 const loader = new Loader({
-  apiKey: "AIzaSyA1prceGY78lJr2Kgj0zwMP0ghLpLYt-eQ",
+  apiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
   version: "weekly",
   libraries: ["visualization"]
 });
