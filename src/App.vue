@@ -22,5 +22,7 @@ import BHeader from './components/icons/BHeader.vue' // Import navigation bar
 main {
   margin-top: 80px; /* Prevent content from overlapping BHeader */
   padding: 20px;
+  min-height: calc(100vh - 80px); /* 100vh minus navbar height */
+
 }
 </style>

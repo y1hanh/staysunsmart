@@ -1,5 +1,6 @@
 <template>
-  <header class="navbar">
+  <header class="navbar d-flex justify-content-between align-items-center">
+    <h1>Sun Protection</h1>
     <nav>
       <RouterLink to="/">Home Page</RouterLink>
       <RouterLink to="/uvindex">UV Index</RouterLink>
@@ -24,7 +25,6 @@ import { RouterLink } from 'vue-router'
   background: #f0f0f0;
   padding: 15px;
   border-bottom: 1px solid #ccc;
-  z-index: 1000; /* it stays above content */
 }
 
 nav {

@@ -9,45 +9,54 @@ const selectSkinType = (skinType) => {
 </script>
 
 <template>
-  <div class="page-content">
-    <h1>Personalisation</h1>
-    <p>Please select the skin color you're interested in.</p>
-
-    <div class="button-group">
-      <button
-        @click="selectSkinType('dark-skin')"
-        :class="{ active: selectedSkin === 'dark-skin' }"
-      >
-        Dark Skin
-      </button>
-      <button
-        @click="selectSkinType('medium-skin')"
-        :class="{ active: selectedSkin === 'medium-skin' }"
-      >
-        Medium Skin
-      </button>
-      <button
-        @click="selectSkinType('light-skin')"
-        :class="{ active: selectedSkin === 'light-skin' }"
-      >
-        Light Skin
-      </button>
+  <div class="container mt-2">
+    <div class="row">
+      <div class="col-auto">
+        <p class="p-3 fw-bold fs-4">Personalisation</p>
+      </div>
     </div>
-    <div v-if="selectedSkin" class="info-text">Here is information of {{ selectedSkin }}:</div>
+    <div class="row">
+      <div class="col-md-6">
+        <p class="p-3 fs-5 border bg-light">Please select the skin color you're interested in.</p>
+        <div class="button-group">
+        <button
+          @click="selectSkinType('dark-skin')"
+          :class="{ active: selectedSkin === 'dark-skin' }"
+        >
+          Dark Skin
+        </button>
+        <button
+          @click="selectSkinType('medium-skin')"
+          :class="{ active: selectedSkin === 'medium-skin' }"
+        >
+          Medium Skin
+        </button>
+        <button
+          @click="selectSkinType('light-skin')"
+          :class="{ active: selectedSkin === 'light-skin' }"
+        >
+          Light Skin
+        </button>
+      </div>
+      </div>
+      <div class="col-md-6">
+        <div v-if="selectedSkin" class="p-3 fs-5 ">Here is information of {{ selectedSkin }}:</div>
+      </div>
+    </div>
   </div>
 </template>
 
 <style scoped>
 .button-group {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 15px;
   margin-top: 15px;
 }
 
 button {
   width: 90px;
-  height: 30px;
+  height: 45px;
   border: 2px solid #ccc;
   background-color: #f0f0f0;
   cursor: pointer;
@@ -68,7 +77,6 @@ button.active {
 }
 
 .info-text {
-  margin-top: 15px;
   font-size: 16px;
 }
 </style>

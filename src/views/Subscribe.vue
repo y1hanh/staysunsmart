@@ -5,12 +5,12 @@ import { ref } from "vue";
 const email = ref("");
 const isEmailValid = ref(false);
 const touched = ref(false); // Track if user has interacted with input
-const subscribed = ref(false); 
-const reminderEnabled = ref(false); 
+const subscribed = ref(false);
+const reminderEnabled = ref(false);
 
 // Email validation function
 const validateEmail = () => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     isEmailValid.value = emailRegex.test(email.value);
 };
 
@@ -22,51 +22,56 @@ const markTouched = () => {
 // Handle form submission
 const subscribe = () => {
     if (isEmailValid.value) {
-        subscribed.value = true; 
+        subscribed.value = true;
         alert(`Subscribed with ${email.value}`);
         email.value = ""; // Clear input field
         isEmailValid.value = false;
-        touched.value = false; 
+        touched.value = false;
     }
 };
 </script>
 
 <template>
-    <div class="page-content"> 
-        <div v-if="!subscribed">
-            <p>Subscribe to our newsletter to receive updates on UV exposure in your area.</p>
+    <div class="container mt-2">
+      <div class="row">
+        <div class="col-auto">
+          <div v-if="!subscribed">
+            <p class="p-3 fs-5" style="text-align: center;">Subscribe to our newsletter to receive updates on UV exposure in your area.</p>
             <form @submit.prevent="subscribe">
                 <div class="input-group">
                     <label for="email">Email:</label>
-                    <input 
-                        type="email" 
-                        id="email" 
-                        v-model="email" 
-                        placeholder="Enter your email" 
+                    <input
+                        type="email"
+                        id="email"
+                        v-model="email"
+                        placeholder="Enter your email"
                         @input="validateEmail"
-                        @blur="markTouched" 
+                        @blur="markTouched"
                     >
                     <input type="submit" value="Subscribe" :disabled="!isEmailValid">
                 </div>
                 <p v-if="touched && !isEmailValid" class="error-message">❌ Please enter a valid email address.</p>
             </form>
+          </div>
         </div>
+      </div>
 
-        <!-- Show reminder toggle after subscription -->
-        <div v-if="subscribed" class="reminder-section">
-            <h1>🎉 Thank you for subscribing!</h1>
 
-            <div class="toggle-container">
-                <label class="switch">
-                    <input type="checkbox" v-model="reminderEnabled">
-                    <span class="slider round"></span>
-                </label>
-                <span class="toggle-text">Turn on reminders</span>
-            </div>
+      <!-- Show reminder toggle after subscription -->
+      <div v-if="subscribed" class="reminder-section">
+          <h1>🎉 Thank you for subscribing!</h1>
 
-            <p v-if="reminderEnabled" class="reminder-message">✅ Reminder is turned ON.</p>
-            <p v-else class="reminder-message">❌ Reminder is turned OFF.</p>
-        </div>
+          <div class="toggle-container">
+              <label class="switch">
+                  <input type="checkbox" v-model="reminderEnabled">
+                  <span class="slider round"></span>
+              </label>
+              <span class="toggle-text">Turn on reminders</span>
+          </div>
+
+          <p v-if="reminderEnabled" class="reminder-message">✅ Reminder is turned ON.</p>
+          <p v-else class="reminder-message">❌ Reminder is turned OFF.</p>
+      </div>
     </div>
 </template>
 
@@ -161,15 +166,15 @@ input[type="submit"]:hover:not(:disabled) {
 }
 
 .toggle-text {
-    margin-top: 8px; 
+    margin-top: 8px;
     font-size: 16px;
     font-weight: bold;
     color: #333;
 }
 
 .switch {
-    margin-bottom: 6px; 
-    margin-right: 6px; 
+    margin-bottom: 6px;
+    margin-right: 6px;
 }
 
 

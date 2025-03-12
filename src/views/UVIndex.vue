@@ -39,18 +39,25 @@ const searchLocation = async () => {
 </script>
 
 <template>
-  <div class="page-content">
-    <h1>UV Index</h1>
-    <p>Learn about the UV Index and how to protect your skin from harmful UV rays.</p>
-
-    <!-- Input Field for User to Enter Location -->
-    <div class="input-container">
-      <input v-model="location" type="text" placeholder="Enter your location" />
-      <button @click="searchLocation">Search</button>
+  <div class="container mt-2">
+    <div class="row">
+      <div class="col-md-6">
+        <p class="p-3 fw-bold fs-4">UV Index</p>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-md-6">
+        <p class="p-3 fs-5 border bg-light">Learn about the UV Index and how to protect your skin from harmful UV rays.</p>
+      </div>
+       <!-- Input Field for User to Enter Location -->
+        <div class="input-container">
+          <input v-model="location" type="text" placeholder="Enter your location" />
+          <button @click="searchLocation">Search</button>
+        </div>
 
-    <!-- Display UV Index Result -->
-    <p v-if="uvIndex !== null">UV Index for {{ location }}: {{ uvIndex }}</p>
+      <!-- Display UV Index Result -->
+      <p v-if="uvIndex !== null">UV Index for {{ location }}: {{ uvIndex }}</p>
+    </div>
   </div>
 </template>
 
