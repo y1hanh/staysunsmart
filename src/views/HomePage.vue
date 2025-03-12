@@ -7,6 +7,7 @@ const API_KEY = "0f2ce572252f4ef9ba455535251103"
 async function fetchUV({ lat, lng }) {
   if (!lat || !lng) return null;
   try {
+    console.log("fetching UV...")
     const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${lat},${lng}&aqi=yes`);
     const data = await response.json();
     if (data && data["current"]["uv"] !== undefined) {
@@ -77,7 +78,7 @@ async function initAutocomplete() {
 
   const searchBox = new SearchBox(input);
 
-  map.value.addListener("bounds_changed", () => {
+  map.value?.addListener("bounds_changed", () => {
     searchBox.setBounds(map.value.getBounds());
   });
 
@@ -109,6 +110,7 @@ async function initAutocomplete() {
 }
 
 watch(currentLocation, async () => {
+  console.log("changed!")
   userUV.value = await fetchUV(currentLocation.value)
 })
 
