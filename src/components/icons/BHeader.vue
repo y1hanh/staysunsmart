@@ -2,8 +2,8 @@
   <header class="navbar-container d-flex justify-content-between align-items-end">
     <!-- Brand Name -->
     <p class="brand-name fs-4">
-      <span>Stay</span>
-      <span>SunSmart</span>
+      <span style="font-size: 1.3em;">Stay</span>
+      <span>&nbsp;&nbsp;SunSmart</span>
     </p>
     <nav>
       <RouterLink to="/">Home Page</RouterLink>
