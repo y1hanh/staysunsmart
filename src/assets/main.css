@@ -22,14 +22,14 @@ a,
 }
 
 @media (min-width: 1024px) {
-  body:not(:has(.home-page)) {
+   /* body {
     display: flex;
     place-items: center;
   } 
 
-  #app:not(:has(.home-page)) {
+  #app {
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 0 2rem;
-  }
+  }  */
 }

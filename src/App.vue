@@ -6,7 +6,6 @@ import BHeader from './components/icons/BHeader.vue' // Import navigation bar
 <template>
   <div class="layout">
     <BHeader />
-
     <main>
       <RouterView />
     </main>
@@ -16,13 +15,13 @@ import BHeader from './components/icons/BHeader.vue' // Import navigation bar
 <style scoped>
 .layout {
   display: flex;
-  flex-direction: column; /* Stack BHeader and content */
+  flex-direction: column;
+  /* Stack BHeader and content */
 }
 
 main {
-  margin-top: 80px; /* Prevent content from overlapping BHeader */
+  margin-top: 80px;
   padding: 20px;
-  min-height: calc(100vh - 80px); /* 100vh minus navbar height */
-
+  min-height: calc(100vh - 80px);
 }
 </style>
