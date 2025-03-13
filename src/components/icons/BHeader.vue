@@ -9,11 +9,11 @@
     <!-- Navigation -->
     <nav>
       <RouterLink to="/">Home Page</RouterLink>
-      <RouterLink to="/uvindex">UV Index</RouterLink>
-      <RouterLink to="/impact">UV Impact</RouterLink>
-      <RouterLink to="/personalisation">Personalisation</RouterLink>
-      <RouterLink to="/clothing">Clothing</RouterLink>
-      <RouterLink to="/subscribe">Subscribe</RouterLink>
+      <RouterLink to="/uvindex">UV Index Check</RouterLink>
+      <RouterLink to="/clothing">Protect Your Skin</RouterLink>
+      <RouterLink to="/personalisation">Personalized Sun Safety Schedule</RouterLink>
+      <!-- <RouterLink to="/clothing">Clothing</RouterLink> -->
+      <!-- <RouterLink to="/subscribe">Subscribe</RouterLink> -->
     </nav>
   </header>
 </template>
@@ -59,13 +59,12 @@ nav {
 nav a {
   text-decoration: none;
   color: black;
-  font-weight: bold;
   padding: 2px 10px;
   border: 2px solid transparent;
-  border-radius: 10px;
+  border-radius: 30px;
   display: inline-block;
   transition: 0.3s;
-  background: #10814a;
+  background: #1eb582;
 }
 
 /* Hover Effect */
