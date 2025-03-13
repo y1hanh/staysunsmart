@@ -18,13 +18,15 @@ import { RouterLink } from 'vue-router'
 
 <style scoped>
 .navbar {
-  position: fixed; /* Always stays at the top */
+  position: fixed;
+  /* Always stays at the top */
   top: 0;
   left: 0;
   width: 100%;
   background: #f0f0f0;
   padding: 15px;
   border-bottom: 1px solid #ccc;
+  z-index: 1000;
 }
 
 nav {

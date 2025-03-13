@@ -1,13 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import homePage from '../views/HomePage.vue'
 import impact from '../views/Impact.vue'
 import personalisation from '../views/Personalisation.vue'
 import uvindex from '../views/UVIndex.vue'
 import clothing from '../views/Clothing.vue'
 import Subscribe from '../views/Subscribe.vue'
+import UvIndexPage from '@/views/UvIndexPage.vue'
 
 const routes = [
-  { path: '/', component: homePage },
+  { path: '/', component: UvIndexPage },
   { path: '/impact', component: impact },
   { path: '/personalisation', component: personalisation },
   { path: '/uvindex', component: uvindex },
