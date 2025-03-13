@@ -1,19 +1,15 @@
 <template>
-  <header class="navbar d-flex justify-content-between align-items-end">
+  <header class="navbar-container d-flex justify-content-between align-items-end">
     <!-- Brand Name -->
-    <p class="brand-name fw-bold fs-4">
+    <p class="brand-name fs-4">
       <span>Stay</span>
       <span>SunSmart</span>
     </p>
-
-    <!-- Navigation -->
     <nav>
       <RouterLink to="/">Home Page</RouterLink>
       <RouterLink to="/uvindex">UV Index Check</RouterLink>
       <RouterLink to="/clothing">Protect Your Skin</RouterLink>
       <RouterLink to="/personalisation">Personalized Sun Safety Schedule</RouterLink>
-      <!-- <RouterLink to="/clothing">Clothing</RouterLink> -->
-      <!-- <RouterLink to="/subscribe">Subscribe</RouterLink> -->
     </nav>
   </header>
 </template>
@@ -24,21 +20,15 @@ import { RouterLink } from 'vue-router'
 
 <style scoped>
 /* Navbar Styling */
-.navbar {
+.navbar-container {
   position: fixed;
-  /* Fixed at the top */
-  position: fixed;
-  /* Always stays at the top */
   top: 0;
   left: 0;
   width: 100%;
-  background: #94e8bf;
+  background: #AFF4C6;
   padding: 12px 15px;
-  height: 90px;
-  /* Ensures enough space */
-  display: flex;
-  align-items: flex-end;
-  /* Moves items to the bottom */
+  height: 10vh;
+  z-index: 1000;
 }
 
 /* Styling for the Brand Name */
@@ -48,15 +38,10 @@ import { RouterLink } from 'vue-router'
   font-style: italic;
   display: flex;
   flex-direction: column;
-  /* Ensures Stay & SunSmart are stacked */
   justify-content: flex-end;
-  /* Align text to the bottom */
   margin-bottom: 0;
-  /* Removes extra spacing */
   line-height: 1;
-  background: #f0f0f0;
   padding: 15px;
-  border-bottom: 1px solid #ccc;
   z-index: 1000;
 }
 
@@ -65,7 +50,6 @@ nav {
   display: flex;
   gap: 15px;
   align-self: flex-end;
-  /* Aligns nav to the bottom */
 }
 
 /* Rounded Square Navigation Links */
@@ -77,12 +61,10 @@ nav a {
   border-radius: 30px;
   display: inline-block;
   transition: 0.3s;
-  background: #1eb582;
+  background: #20B2AA;
 }
 
-/* Hover Effect */
 nav a:hover {
-  background-color: black;
   color: white;
 }
 </style>
