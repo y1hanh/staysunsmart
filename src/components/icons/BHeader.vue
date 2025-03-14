@@ -1,10 +1,10 @@
 <template>
   <header class="navbar-container d-flex justify-content-between align-items-end">
     <!-- Brand Name -->
-    <p class="brand-name fs-4">
-      <span style="font-size: 1.3em;">Stay</span>
-      <span>&nbsp;&nbsp;SunSmart</span>
-    </p>
+      <div class="brand-name fs-4">
+          <span style="font-size: 1.3em; color: #2A3D66;">Stay</span>
+          <span style ="font-size:1.0em;color: #F28C28;">&nbsp;&nbsp;SunSmart</span>
+      </div>
     <nav>
       <RouterLink to="/">Home Page</RouterLink>
       <RouterLink to="/uvindex">UV Index Check</RouterLink>
@@ -22,10 +22,10 @@ import { RouterLink } from 'vue-router'
 /* Navbar Styling */
 .navbar-container {
   position: fixed;
+  margin-top: 20px;
   top: 0;
   left: 0;
   width: 100%;
-  background: #AFF4C6;
   padding: 12px 15px;
   height: 10vh;
   z-index: 1000;
@@ -38,11 +38,13 @@ import { RouterLink } from 'vue-router'
   font-style: italic;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
+  align-items: flex-start;
   margin-bottom: 0;
   line-height: 1;
   padding: 15px;
   z-index: 1000;
+
 }
 
 /* Navigation */
@@ -56,15 +58,16 @@ nav {
 nav a {
   text-decoration: none;
   color: black;
+
+}
+
+nav a:hover {
+  color: white;
   padding: 2px 10px;
   border: 2px solid transparent;
   border-radius: 30px;
   display: inline-block;
   transition: 0.3s;
-  background: #20B2AA;
-}
-
-nav a:hover {
-  color: white;
+  background: #00ACDE;
 }
 </style>

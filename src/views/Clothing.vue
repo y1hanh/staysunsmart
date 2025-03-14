@@ -79,7 +79,7 @@ import UvBrandCard from '../components/UVClothing.vue';
           />
           <UvBrandCard
             title="Solbari"
-            description="Lightweight UPF 50+ clothing with focus on comfort"
+            description="UPF 50+ sun hats, clothing and accessories for all your active adventures"
             link="https://www.solbari.com.au/?gad_source=1&gclid=Cj0KCQjw4cS-BhDGARIsABg4_J2BCgdfQcb1OFi_4tYOxkso0UzSJbYm-KYvyKHsMv2ryVsBNC8MOOgaAn0gEALw_wcB"
             linkText="www.uvskinz.com"
           />
@@ -343,8 +343,8 @@ import UvBrandCard from '../components/UVClothing.vue';
 /* 3rd Section */
 .third-container {
   display: flex;
-  flex-wrap: wrap; /* Allows content to wrap if needed */
-  justify-content: space-between; /* Distributes content */
+  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: flex-start;
   width: 100%;
   background: #ECF6F3;

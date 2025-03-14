@@ -1,7 +1,8 @@
 <script setup>
 import { ref } from "vue";
-import PersonalisationInfo from "../views/personalisationInfo.vue";
+import PersonalisationInfoInfo from "../views/personalisationInfo.vue";
 
+/* Define an array of skin types with Roman numerals */
 /* Define an array of skin types with their recommended protection */
 const skinTypes = ref([
   {
@@ -79,71 +80,71 @@ const getSelectedSkin = () => {
 
 <template>
   <div class="personalization-page">
-
     <div class="container mt-2">
-      <div class="text-dropdown-container">
-        <p class="personalized-title">Personalised Sun Safety Schedule</p>
-        <p class="personalized-des">Get customised sun protection recommendations based on your skin type.</p>
+      <div class="left-side">
 
-        <div class="dropdown-container">
-            <label for="skinType" class="dropdown-label">Select Your Skin Type:</label>
-            <select id="skinType" class="styled-dropdown" v-model="selectedSkin">
-              <option value="" disabled selected>Click here to select your skin type..</option>
-              <option v-for="skin in skinTypes" :key="skin.value" :value="skin.value">
-                {{ skin.roman }} <!-- Display Roman numeral -->
-              </option>
-            </select>
-            <p class="info-text">Your skin type determines how quickly you burn and how much protection you need.</p>
+        <!-- Title Row -->
+        <div class="row">
+          <div class="col">
+            <p class="personalized-title">Personalised Sun Safety Schedule</p>
+          </div>
+        </div>
+
+        <!-- Subtitle Row -->
+        <div class="row">
+          <div class="col">
+            <p class="personalized-description">
+              Get customised sun protection recommendations based on your skin type.
+            </p>
+          </div>
+        </div>
+
+        <!-- Dropdown Row -->
+        <div class="row">
+          <div class="col">
+            <div class="dropdown-container">
+              <label for="skinType" class="dropdown-label">Select Your Skin Type:</label>
+              <select id="skinType" class="styled-dropdown" v-model="selectedSkin">
+                <option value="" disabled selected>Click here to select your skin type..</option>
+                <option v-for="skin in skinTypes" :key="skin.value" :value="skin.value">
+                  {{ skin.roman }} <!-- Display Roman numeral -->
+                </option>
+              </select>
+              <p class="info-text">Your skin type determines how quickly you burn and how much protection you need.</p>
+            </div>
+          </div>
+        </div>
+        <!-- after choosing your skin type, you will be given a personalised sun safety schedule to follow. -->
+        <div class="row">
+          <div class="col">
             <div v-if="selectedSkin" class="selected-skin-box">
 
               <p class="select-box-title">Your Personalised Sun Safety Schedule</p>
-              <!--  <p class="select-box-choose">{{ getSelectedSkin()?.roman }}</p> -->
+              <p class="select-box-choose">{{ getSelectedSkin()?.roman }}</p>
               <p class="select-box-info">Based on your skin type, we have customised recommemdation to help you stay safe in the sun.</p>
             </div>
+          </div>
+        </div>
+        <!-- Protection Recommendations -->
+        <div class="row">
+          <div class="col">
+            <div v-if="selectedSkin" class="recommended-protection">
+              <p class="protection-title">Recommended Protection</p>
+              <ul>
+                <li v-for="item in getSelectedSkin()?.protection" :key="item.text">
+                  {{ item.icon }} {{ item.text }}
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="info-container">
-        <PersonalisationInfo v-if="selectedSkin" />
-      </div>
-
-      <div class="sun-safety-container">
-        <div class="protection-row">
-          <div v-if="selectedSkin" class="recommended-protection">
-          <p class="protection-title">Recommended Protection</p>
-          <ul>
-            <li v-for="item in getSelectedSkin()?.protection" :key="item.text">
-              {{ item.icon }} {{ item.text }}
-            </li>
-          </ul>
+      <!-- Right Side - Sun Safety Information -->
+      <div class="right-side">
+          <PersonalisationInfoInfo v-if="selectedSkin" />
         </div>
-        <div v-if="selectedSkin" class="safe-sun-hours">
-          <p class="protection-title">Safe Sun Hours</p>
-          <ul>
-            <li>✅ Safest time: Before 9 AM, After 5 PM</li>
-            <li>❌ Avoid sun during: 10 AM - 4 PM</li>
-            <li>⚠️ Risk Level: Very High</li>
-          </ul>
-        </div>
-
-        <!-- Recommended Safety Measures -->
-        <div v-if="selectedSkin" class="safety-measures">
-          <p class="protection-title">Recommended Safety Measures</p>
-          <ul>
-            <li>✔️ Wear wide-brimmed hats: SPF 50+</li>
-            <li>✔️ Seek shade whenever possible</li>
-            <li>✔️ Use physical sunscreen with Zinc Oxide</li>
-            <li>✔️ Wear UV-protective sunglasses</li>
-          </ul>
-        </div>
-      </div>
-
-      </div>
-
     </div>
-
-
   </div>
-
 </template>
 
 
@@ -157,58 +158,39 @@ const getSelectedSkin = () => {
   min-height: 100vh;
   font-family: Arial, sans-serif;
 }
-
 /* General Styling */
 .container {
   display: flex;
-  width: 100%;
+  width: 100vw;
   min-height: 100vh;
   background: white;
   border-radius: 10px;
   overflow-y: auto;
-  flex-direction: column;
-  align-items: center;
 }
 
-.text-dropdown-container {
+.left-side {
   width: 100%;
+  text-align: left;
+}
+
+/* Right Section - Sun Safety Info */
+.right-side {
+  width: 50%;
   padding: 20px;
   text-align: left;
-}
-
-.personalized-title {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.personalized-des {
-  font-size: 1rem;
-  margin-bottom: 10px;
-}
-
-/*  Sun Safety Info */
-.info-container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: 100%;
-  text-align: left;
-  margin-top: 20px;
-  align-items: center;
 }
 
 
 /* Dropdown Section */
 .dropdown-container {
-  background: #1ABAAC; /* Green background */
+  background: #1B9C96; /* Green background */
   padding: 40px;
   border-radius: 15px;
-  text-align: left;
+  text-align: left; /* Align text to the left */
   color: white;
-  max-width: 100%;
+  max-width: 600px;
   margin-left: auto;
-  margin-right: auto;
+  margin-right: auto; /* Centers the green box */
 }
 
 /* Label - Always Align Left */
@@ -216,7 +198,7 @@ const getSelectedSkin = () => {
   font-size: 1.5rem;
   font-weight: bold;
   display: block;
-  text-align: left;
+  text-align: left; /* Ensures text aligns left */
   width: 100%;
   margin-bottom: 10px;
 }
@@ -246,50 +228,52 @@ const getSelectedSkin = () => {
 }
 
 .selected-skin-box {
+  background: #4CAF50; /* Green background */
+  padding: 15px;
+  border-radius: 15px;
   text-align: center;
   color: white;
   font-size: 1rem;
   font-weight: bold;
-
+  max-width: 600px;
+  margin: 20px auto;
 }
 
 .select-box-title {
   font-size: 1rem;
   margin-bottom: 10px;
   text-align: left;
-  color: white;
+  color: black;
 }
 
-/* .select-box-choose {
+.select-box-choose {
   font-size: 0.8rem;
   margin-bottom: 10px;
   text-align: left;
   color:#FDD3D0;
-} */
+}
 
 .select-box-info {
   font-size: 0.8rem;
   margin-bottom: 10px;
   text-align: left;
-  color: white;
+  color: black;
 }
 
 /* Recommended Protection Section */
-.recommended-protection,.safe-sun-hours,
-.safety-measures {
+.recommended-protection {
+  background: #FFF5CC;
   padding: 20px;
   border-radius: 15px;
-  max-width: 33%;
+  max-width: 300px;
   margin: 20px auto;
   text-align: left;
-  min-height: 300px
 }
 
 /* Recommended Protection Title */
 .protection-title {
   font-size: 1.2rem;
   font-weight: bold;
-  border-bottom: 2px solid #D9D3BD;
 }
 
 /* List Items */
@@ -303,47 +287,6 @@ const getSelectedSkin = () => {
   margin: 8px 0;
   display: flex;
   align-items: center;
-}
-
-.sun-safety-container {
-  width: 100%;
-  margin-left: 20px;
-}
-
-.protection-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 2px;
-  width: 100%;
-  margin-top: 20px;
-  flex-wrap: wrap;
-}
-
-.recommended-protection ul,
-.safe-sun-hours ul,
-.safety-measures ul {
-  list-style-type: none; /* Removes bullet points */
-  padding: 0; /* Removes default padding */
-  margin: 0; /* Removes default margin */
-}
-
-
-
-/* Background Colors */
-.recommended-protection {
-  background: #FFF8E1;
-  border-left: 5px solid #FFECAE;
-
-}
-.safe-sun-hours {
-  background: #FFE0B2;
-  border-left: 5px solid #FFB74D;
-}
-
-.safety-measures {
-  background: #E0F2F1;
-  border-left: 5px solid #56B9B0;
 }
 </style>
 
