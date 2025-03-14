@@ -4,6 +4,7 @@ import uvImage from '../assets/image1.png';
 import uv2Image from '../assets/image2.png';
 import uv3Image from '../assets/image3.png';
 import uv4Image from '../assets/image4.png';
+import UvBrandCard from '../components/UVClothing.vue';
 </script>
 
 <template>
@@ -51,6 +52,37 @@ import uv4Image from '../assets/image4.png';
           </div>
         </div>
       </div>
+      <!-- third part -->
+      <div class="third-container">
+        <p class="third-title">Where to Find Quality UV Protective Clothing</p>
+        <div class="brand-container">
+          <UvBrandCard
+            title="Coolibar"
+            description="Pioneer in UPF 50+ clothing for the whole family"
+            link="https://www.coolibar.com"
+            linkText="www.coolibar.com"
+          />
+          <UvBrandCard
+            title="Columbia"
+            description="Outdoor brand with Omni-Shade UPF protection technology"
+            link="https://www.columbia.com"
+            linkText="www.columbia.com"
+          />
+          <UvBrandCard
+            title="UV Skinz"
+            description="Lightweight UPF 50+ clothing with focus on comfort"
+            link="https://www.uvskinz.com"
+            linkText="www.uvskinz.com"
+          />
+          <UvBrandCard
+            title="Solbari"
+            description="Lightweight UPF 50+ clothing with focus on comfort"
+            link="https://www.uvskinz.com"
+            linkText="www.uvskinz.com"
+          />
+        </div>
+      </div>
+
     </div>
   </div>
 </template>
@@ -116,9 +148,6 @@ import uv4Image from '../assets/image4.png';
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 0;
-  margin-left: 0;
-  margin-bottom: 0;
   background: #52B4CE;
 }
 
@@ -182,7 +211,7 @@ import uv4Image from '../assets/image4.png';
   display: flex;
   justify-content: flex-start;
   background: #E6F2F7;
-  min-height: 100vh;
+  min-height: 50vh;
   padding-top: 20px;
 }
 
@@ -239,6 +268,26 @@ import uv4Image from '../assets/image4.png';
   background: #0056b3;
 }
 
+/* 3rd Section */
+.third-container {
+  background: #ECF6F3;
+  width: 100%;
+  min-height: 100vh;
+}
+.third-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+.brand-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
 
 </style>
 
