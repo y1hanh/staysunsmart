@@ -38,17 +38,20 @@ import UvBrandCard from '../components/UVClothing.vue';
           <div class="article">
             <img :src="uv2Image" alt="UV Protection" class="article-image"/>
             <p class="article-text">UPF VS SPF</p>
-            <button class="article-btn">Learn more</button>
+            <a href=https://www.cancer.org.au/cancer-information/causes-and-prevention/sun-safety/be-sunsmart/sunsmart-at-work
+  class="article-btn">Learn more</a>
           </div>
           <div class="article">
             <img :src="uv3Image" alt="UV Protection" class="article-image"/>
             <p class="article-text">Sun safety measures for children</p>
-            <button class="article-btn">Learn more</button>
+            <a href=https://raisingchildren.net.au/newborns/safety/outdoor-sun-safety/sun-safety
+ class="article-btn">Learn more</a>
           </div>
           <div class="article">
             <img :src="uv4Image" alt="UV Protection" class="article-image"/>
             <p class="article-text">How to be Sun Smart at Work</p>
-            <button class="article-btn">Learn more</button>
+            <a href=https://www.cancer.org.au/cancer-information/causes-and-prevention/sun-safety/be-sunsmart/sunsmart-at-work
+ class="article-btn">Learn more</a>
           </div>
         </div>
       </div>
@@ -59,31 +62,100 @@ import UvBrandCard from '../components/UVClothing.vue';
           <UvBrandCard
             title="Coolibar"
             description="Pioneer in UPF 50+ clothing for the whole family"
-            link="https://www.coolibar.com"
+            link="https://www.coolibar.com/?srsltid=AfmBOor-PaVcJf_q8m96PHitEZhwaWIK9_zKaxQNbNrsgucnC_eZg_Gq"
             linkText="www.coolibar.com"
           />
           <UvBrandCard
             title="Columbia"
             description="Outdoor brand with Omni-Shade UPF protection technology"
-            link="https://www.columbia.com"
+            link="https://www.columbiasportswear.com.au/categories/84-omni-shade-technology?ccsort=newin&filter-gender=14&filter-gender=13&filter-gender=15"
             linkText="www.columbia.com"
           />
           <UvBrandCard
             title="UV Skinz"
             description="Lightweight UPF 50+ clothing with focus on comfort"
-            link="https://www.uvskinz.com"
+            link=" https://www.uvskinz.com/?srsltid=AfmBOooX-BKBfVhdhIre5EfMs_Z7QH8Rw4DjjTi52I8fXOyAwLS7g1D_"
             linkText="www.uvskinz.com"
           />
           <UvBrandCard
             title="Solbari"
             description="Lightweight UPF 50+ clothing with focus on comfort"
-            link="https://www.uvskinz.com"
+            link="https://www.solbari.com.au/?gad_source=1&gclid=Cj0KCQjw4cS-BhDGARIsABg4_J2BCgdfQcb1OFi_4tYOxkso0UzSJbYm-KYvyKHsMv2ryVsBNC8MOOgaAn0gEALw_wcB"
             linkText="www.uvskinz.com"
           />
         </div>
+        <div class="fourth-container">
+          <div class="shopping-upf-wrapper">
+            <div class="shopping-tips-container">
+              <p class="shopping-tips-title">Shopping Tips</p>
+              <p class="shopping-tips-text">
+                Always check the UPF rating on the label. For maximum protextion, look for UPF 50+ certified by
+                organizations like the Skin Cancer Foundation.
+              </p>
+            </div>
+            <div class="shopping-item-container">
+              <p class="shopping-item-title">What to look for When Shopping for UPF Clothing</p>
+              <ul class="shopping-list">
+                <li>
+                  <strong>🏆 Certification</strong>
+                  <p class="list-des">Look for official UPF certification and testing from recognized organizations like AATCC or the Skin Cancer Foundation.</p>
+                </li>
+                <li>
+                  <strong>👕 Coverage</strong>
+                  <p class="list-des">Choose designs with extended coverage (longer sleeves, higher necklines) for sensitive areas like shoulders and chest.</p>
+                </li>
+                <li>
+                  <strong>🔄 Versatility</strong>
+                  <p class="list-des">Pick pieces that can be layered or used for multiple activities and different weather conditions.</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="upf-container">
+            <p class="upf-title">Factors That Affect UPF Rating:</p>
+            <ul class="upf-list">
+              <li><strong>Fabric Type </strong><p class="upf-des">Synthetic fibers like polyester provide better protection than cotton.</p></li>
+              <li><strong>Construction</strong> <p class="upf-des">Tighter weaves allow less UV penetration.</p></li>
+              <li><strong>Color Darker </strong><p class="upf-des">colors absorb more UV radiation.</p></li>
+              <li><strong>Treatments</strong> <p class="upf-des">Special UV-absorbing treatments enhance protection.</p></li>
+            </ul>
+          </div>
+          <div class="upf-rating-container">
+            <p class="upf-rating-title">Understanding UPF Ratings</p>
+            <div class="upf-rating-list">
+
+              <div class="upf-rating-item">
+                <div class="upf-badge upf-low">UPF 15-24</div>
+                <div class="upf-text">
+                  <p class="upf-protection">Good Protection</p>
+                  <p class="upf-detail">Blocks 93.3-95.8% of UV radiation</p>
+                </div>
+              </div>
+
+              <div class="upf-rating-item">
+                <div class="upf-badge upf-medium">UPF 25-39</div>
+                <div class="upf-text">
+                  <p class="upf-protection">Very Good Protection</p>
+                  <p class="upf-detail">Blocks 96-97.4% of UV radiation</p>
+                </div>
+              </div>
+
+              <div class="upf-rating-item">
+                <div class="upf-badge upf-high">UPF 40+</div>
+                <div class="upf-text">
+                  <p class="upf-protection">Excellent Protection</p>
+                  <p class="upf-detail">Blocks 97.5% or more of UV radiation</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
       </div>
 
+
     </div>
+
   </div>
 </template>
 
@@ -270,9 +342,12 @@ import UvBrandCard from '../components/UVClothing.vue';
 
 /* 3rd Section */
 .third-container {
-  background: #ECF6F3;
+  display: flex;
+  flex-wrap: wrap; /* Allows content to wrap if needed */
+  justify-content: space-between; /* Distributes content */
+  align-items: flex-start;
   width: 100%;
-  min-height: 100vh;
+  background: #ECF6F3;
 }
 .third-title {
   font-size: 1.1rem;
@@ -287,6 +362,174 @@ import UvBrandCard from '../components/UVClothing.vue';
   flex-wrap: wrap;
   gap: 20px;
   margin-top: 20px;
+}
+
+.fourth-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+
+}
+
+.shopping-upf-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  gap: 10px;
+}
+
+.shopping-tips-container {
+  margin-top: 20px;
+  margin-left: 20px;
+  padding: 3px 10px;
+  border-radius: 15px;
+  background: #FEFCE8;
+  border: 2px solid #FACC14;
+}
+
+.shopping-tips-title {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #854D0F;
+}
+
+.shopping-tips-text {
+  font-size: 0.8rem;
+  color: #333;
+}
+
+.shopping-item-container {
+  margin-top: 10px;
+  margin-left: 20px;
+  padding: 3px 10px;
+  border-radius: 15px;
+  background: #EFFDFA;
+  border: 3px solid #CBFBF1;
+}
+
+.shopping-item-title {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #0F5E59;
+}
+
+.shopping-list {
+  color: #0F5E59;
+}
+
+.list-des {
+  font-size: 0.8rem;
+  color: #333;
+}
+
+/* UPF Section */
+.upf-container {
+  width: 25%;
+  align-items: start;
+  padding: 20px;
+  margin-top: 20px;
+  margin-left: 20px;
+  border-radius: 15px;
+  border: 3px solid #CFFAF1;
+  text-align: left;
+  align-items: flex-start;
+}
+
+.upf-title {
+  font-size: 1rem;
+  font-weight: bold;
+
+}
+
+.upf-list {
+  color: #0F5E59;
+  font-size: 1rem;
+  font-weight: bold;
+  list-style-type: none;
+  text-align: left;
+  padding-left: 0;
+}
+
+.upf-des {
+  font-size: 0.8rem;
+  color: #333;
+}
+
+/* UPF Rating Section */
+.upf-rating-container{
+  width: 25%;
+  align-items: start;
+  padding: 20px;
+  margin-top: 20px;
+  margin-left: 20px;
+  border-radius: 15px;
+  border: 3px solid #CFFAF1;
+  text-align: left;
+  align-items: flex-start;
+}
+
+.upf-rating-title {
+  font-size: 1rem;
+  font-weight: bold;
+ }
+
+.upf-rating-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.upf-rating-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.upf-badge {
+  width: 65px;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.upf-low {
+  background: #FDEFD6;
+  color: #B55D15;
+}
+
+.upf-medium {
+  background: #FEF9CD;
+  color: #A68C1D;
+}
+
+.upf-high {
+  background: #E1F6E9;
+  color: #2B7A3F;
+}
+
+.upf-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.upf-protection {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #0F5E59;
+  margin-bottom: 2px;
+}
+
+.upf-detail {
+  font-size: 0.8rem;
+  color: #555;
 }
 
 </style>
