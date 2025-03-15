@@ -1,15 +1,15 @@
 <template>
   <header class="navbar-container d-flex justify-content-between align-items-end">
     <!-- Brand Name -->
-    <div class="brand-name fs-4" @click="() => router.push('/')">
+    <div class="brand-name fs-2 fw-bolder" @click="() => router.push('/')">
       <span style="font-size: 1.3em; color: #2A3D66;">Stay</span>
       <span style="font-size:1.0em;color: #F28C28;">&nbsp;&nbsp;SunSmart</span>
     </div>
     <nav>
-      <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/uvindex">UV Index Check</RouterLink>
-      <RouterLink to="/clothing">Protect Your Skin</RouterLink>
-      <RouterLink to="/personalisation">Personalized Sun Safety Schedule</RouterLink>
+      <RouterLink active-class="activeRouter" to="/">Home</RouterLink>
+      <RouterLink active-class="activeRouter" to="/uvindex">UV Index Check</RouterLink>
+      <RouterLink active-class="activeRouter" to="/clothing">Protect Your Skin</RouterLink>
+      <RouterLink active-class="activeRouter" to="/personalisation">Personalized Sun Safety Schedule</RouterLink>
     </nav>
   </header>
 </template>
@@ -26,8 +26,7 @@ const router = useRouter();
   top: 0;
   left: 0;
   width: 100%;
-  padding: 12px 15px;
-  padding-top: 6%;
+  padding-top: 7%;
   height: 10vh;
   z-index: 1000;
   background-color: #FFFFFF;
@@ -65,6 +64,15 @@ nav a {
 }
 
 nav a:hover {
+  color: white;
+  border: 2px solid transparent;
+  border-radius: 30px;
+  display: inline-block;
+  transition: 0.3s;
+  background: #00ACDE;
+}
+
+.activeRouter {
   color: white;
   border: 2px solid transparent;
   border-radius: 30px;

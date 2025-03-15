@@ -22,8 +22,7 @@ import Reminder from '@/components/Reminder.vue'
 }
 
 main {
-  margin-top: 80px;
-  padding: 20px;
+  margin-top: 12%;
   min-height: calc(100vh - 80px);
 }
 </style>
