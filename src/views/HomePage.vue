@@ -34,7 +34,11 @@ const router = useRouter()
       <div class="col-6 home_page_text_container " style="color: #FF9500;">
         <div class="fw-bold " style="font-size: 2rem; color: white;"> UV impacts to your skin</div>
         <div class="text-desc" style="font-size: 1.5rem; color: white;"> UV radiation damages the DNA in skin cells leading to muttations that increase skin cancer risk.</div>
-        <button class="damage_btn" @click="router.push('/')">Learn more</button>
+        <a href="https://www.cancercouncil.com.au/cancer-prevention/sun-protection/understanding-uv-radiation/how-uv-radiation-increases-skin-cancer-risk/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="damage_btn">Learn more</a>
+
       </div>
     </div>
   </div>
@@ -96,11 +100,13 @@ const router = useRouter()
   align-items: center;
   justify-content: center;
   text-align: center;
+  text-decoration: none;
  }
 
 .damage_btn:hover {
   background-color: rgb(2, 118, 154);
 }
+
 
 /* .uv_map {
   width: 80vw;

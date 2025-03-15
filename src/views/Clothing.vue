@@ -39,19 +39,25 @@ import UvBrandCard from '../components/UVClothing.vue';
             <img :src="uv2Image" alt="UV Protection" class="article-image"/>
             <p class="article-text">UPF VS SPF</p>
             <a href=https://www.cancer.org.au/cancer-information/causes-and-prevention/sun-safety/be-sunsmart/sunsmart-at-work
-  class="article-btn">Learn more</a>
+              target="_blank"
+              rel="noopener noreferrer"
+              class="article-btn">Learn more</a>
           </div>
           <div class="article">
             <img :src="uv3Image" alt="UV Protection" class="article-image"/>
             <p class="article-text">Sun safety measures for children</p>
             <a href=https://raisingchildren.net.au/newborns/safety/outdoor-sun-safety/sun-safety
- class="article-btn">Learn more</a>
+              target="_blank"
+              rel="noopener noreferrer"
+              class="article-btn">Learn more</a>
           </div>
           <div class="article">
             <img :src="uv4Image" alt="UV Protection" class="article-image"/>
             <p class="article-text">How to be Sun Smart at Work</p>
             <a href=https://www.cancer.org.au/cancer-information/causes-and-prevention/sun-safety/be-sunsmart/sunsmart-at-work
- class="article-btn">Learn more</a>
+              target="_blank"
+              rel="noopener noreferrer"
+            class="article-btn">Learn more</a>
           </div>
         </div>
       </div>
@@ -305,6 +311,7 @@ import UvBrandCard from '../components/UVClothing.vue';
   margin-top: 1px;
   font-weight: bold;
   color: black;
+  text-decoration: none;
 }
 
 .article-btn:hover {
