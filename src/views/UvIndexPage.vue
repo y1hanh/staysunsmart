@@ -59,6 +59,10 @@ async function initMap() {
       // marker.setMap(map);
       currentLocation.value = pos
       map.value.setCenter(pos);
+    }, function () {
+      console.warn("Geolocation permission denied. Using default location.");
+      currentLocation.value = melbourne;
+      map.value.setCenter(melbourne);
     });
   }
 }
