@@ -4,10 +4,6 @@ const router = useRouter()
 </script>
 
 <template>
-<<<<<<< HEAD
-  <div>home page</div>
-</template>
-=======
   <div class=" text-center">
     <div class="row">
       <div class="col-6 home_page_img_container">
