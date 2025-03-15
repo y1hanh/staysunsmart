@@ -1,11 +1,13 @@
 <script setup>
 import { RouterView } from 'vue-router'
 import BHeader from './components/icons/BHeader.vue' // Import navigation bar
+import Reminder from '@/components/Reminder.vue'
 </script>
 
 <template>
   <div class="layout">
     <BHeader />
+    <Reminder />
     <main>
       <RouterView />
     </main>
@@ -20,8 +22,7 @@ import BHeader from './components/icons/BHeader.vue' // Import navigation bar
 }
 
 main {
-  margin-top: 80px;
-  padding: 20px;
+  margin-top: 12%;
   min-height: calc(100vh - 80px);
 }
 </style>
