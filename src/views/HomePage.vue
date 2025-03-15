@@ -28,14 +28,13 @@ const router = useRouter()
     </div>
 
     <div class="row">
-      <div class="col-3 home_page_text_container">
-        <div class="fw-bold"> Protect Your Skin</div>
-      </div>
       <div class="col-6 home_page_img_container">
         <img class="home_page_img" src="@/assets/home_page_img1.png" />
       </div>
-      <div class="col-3 home_page_text_container " style="color: #FF9500;">
-        <div class="fw-bold"> Protect Your Skin</div>
+      <div class="col-6 home_page_text_container " style="color: #FF9500;">
+        <div class="fw-bold"> UV impacts to your skin</div>
+        <div class="text-desc"> UV radiation damages the DNA in skin cells leading to muttations that increase skin cancer risk</div>
+        <button class="damage_btn" @click="router.push('/')">Learn more</button>
       </div>
     </div>
   </div>
@@ -49,11 +48,11 @@ const router = useRouter()
 
 .home_page_text_container {
   padding: 0;
-  background-color: #AFF4C6;
+  background-color: #61ABBE;
   font-size: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around
+  justify-content: center
 }
 
 .home_page_img {
@@ -76,6 +75,30 @@ const router = useRouter()
 }
 
 .check_out_btn:hover {
+  background-color: rgb(2, 118, 154);
+}
+
+.damage_btn {
+  background-color: white;
+  color: #61ABBE;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 150px;
+  height: 30px;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+ }
+
+.damage_btn:hover {
   background-color: rgb(2, 118, 154);
 }
 
