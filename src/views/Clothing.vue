@@ -9,8 +9,8 @@ import UvBrandCard from '../components/UVClothing.vue';
 
 <template>
   <div class="cloth-page">
-    <div class="container">
-      <div class="text-container">
+    <div class="row">
+      <div class="col-12 text-container">
         <p class="text-title">
           <span class="text-skin">Protect Your Skin,</span>
           <span class="text-health"> Protect Your Health.</span>
@@ -19,7 +19,7 @@ import UvBrandCard from '../components/UVClothing.vue';
           Everything you need to know about UV protective clothing and why it matters for your long-term health.
         </p>
       </div>
-
+    </div>
       <!-- Image container -->
       <div class="image-container">
         <img :src="uvImage" alt="UV Protection" class="image-style"/>
@@ -154,41 +154,17 @@ import UvBrandCard from '../components/UVClothing.vue';
       </div>
 
 
-    </div>
+
 
   </div>
 </template>
 
 <style scoped>
-/* Page Styling */
-.cloth-page {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  min-height: 100vh;
-  font-family: Arial, sans-serif;
 
-}
-
-/* Center the container */
-.container {
-  display: flex;
-  flex-direction: column; /* Stack elements */
-  align-items: center;
-  width: 100vw;
-  min-height: 100vh;
-  background: white;
-  border-radius: 10px;
-  overflow-y: auto;
-}
-
-/* Text Section */
 .text-container {
   text-align: center;
-  max-width: 800px;
-  margin-bottom: 20px;
+  padding: 20px;
 }
-
 /* Title Styling */
 .text-title {
   font-size: 2rem;
@@ -209,7 +185,6 @@ import UvBrandCard from '../components/UVClothing.vue';
 .text-description {
   font-size: 1rem;
   color: #333;
-  max-width: 800px;
   line-height: 1.5;
   text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
 }
