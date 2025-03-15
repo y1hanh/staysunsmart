@@ -3,8 +3,16 @@ import { onMounted, ref, watch } from 'vue'
 import { Loader } from '@googlemaps/js-api-loader';
 import Divider from '@/components/Divider.vue'
 import UvIndexRec from '@/components/UvIndexRec.vue'
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 const API_KEY = "0f2ce572252f4ef9ba455535251103"
+const melbourne = { lat: -37.8136, lng: 144.9631 }
+const currentLocation = ref(null);
+const location = ref(null);
+const userUV = ref(null);
+const map = ref(null);
 
 async function fetchUV({ lat, lng }) {
   if (!lat || !lng) return null;
@@ -13,6 +21,7 @@ async function fetchUV({ lat, lng }) {
     const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${lat},${lng}&aqi=yes`);
     const data = await response.json();
     if (data && data["current"]["uv"] !== undefined) {
+      location.value = data["location"]["name"]
       return data["current"]["uv"];
     }
   } catch (error) {
@@ -26,15 +35,7 @@ const loader = new Loader({
   version: "weekly",
   libraries: ["visualization"]
 });
-const melbourne = { lat: -37.8136, lng: 144.9631 }
-const currentLocation = ref(null);
-const userUV = ref(null);
-const map = ref(null);
-// var heatmapData = [
-//   { location: { lat: -37.8136, lng: 144.9631 }, weight: 78.2 },
-//   // { location: { lat: -37.8200, lng: 144.9600 }, weight: 65.4 },
-//   // { location: { lat: -37.8150, lng: 144.9700 }, weight: 50.0 }
-// ];
+
 
 async function initMap() {
   const { Map } = await loader.importLibrary("maps");
@@ -44,7 +45,6 @@ async function initMap() {
     zoom: 13,
   });
 
-  // show user's location
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function (position) {
       var pos = {
@@ -84,13 +84,12 @@ async function initAutocomplete() {
 
 
     const bounds = new LatLngBounds();
-
     places.forEach((place) => {
       if (!place.geometry || !place.geometry.location) {
         console.log("Returned place contains no geometry");
         return;
       }
-
+      currentLocation.value = { lat: place.geometry.location.lat().toString(), lng: place.geometry.location.lng().toString() };
       if (place.geometry.viewport) {
         bounds.union(place.geometry.viewport);
       } else {
@@ -103,7 +102,7 @@ async function initAutocomplete() {
 }
 
 watch(currentLocation, async () => {
-  console.log("changed!")
+  console.log("location changed!")
   userUV.value = await fetchUV(currentLocation.value)
 })
 
@@ -127,13 +126,22 @@ onMounted(() => {
         </div>
 
         <div class="uv-info">
-          <div>Location:</div>
-          <div>UV index level: {{ userUV ? userUV : "loading..." }}</div>
+          <div>Location: {{ location }}</div>
+          <div>
+            <span>UV index level: </span>
+            <span :class="{ highUV: userUV > 6 }"> {{ userUV ? userUV : "loading..." }} {{ userUV > 6 ?
+              "(High)" : "" }}</span>
+          </div>
           <div>Recommend Protection</div>
-          <UvIndexRec :uvLevel="0" />
+
+          <UvIndexRec v-if="userUV >= 3" :uvLevel="userUV" />
+          <div v-else>No protection needed</div>
+          <Divider></Divider>
+          <button class="router_to_personalisation" @click="router.push('/personalisation')">Get personalised
+            suggestion</button>
         </div>
       </div>
-      <div style="flex: 2;">
+      <div style=" flex: 2;">
         <div id="map"></div>
       </div>
     </div>
@@ -141,6 +149,26 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.highUV {
+  color: red;
+}
+
+.router_to_personalisation {
+  border: none;
+  background-color: #F28C28;
+  text-decoration: none;
+  color: #E9F2FF;
+  border-radius: 4px;
+  padding: 7px 25px;
+  font-family: 'Itim', regular;
+  font-size: 18px;
+  transition: 0.2s;
+}
+
+.router_to_personalisation:hover {
+  background-color: #F28C28;
+}
+
 .uv-index-page {
   display: flex;
   justify-content: center;
@@ -161,9 +189,12 @@ onMounted(() => {
 .left-side {
   flex: 1;
   padding: 20px;
+  height: 80vh;
+  margin-right: 20px;
   display: flex;
   flex-direction: column;
   gap: 15px;
+  background-color: #ECFDF5;
 }
 
 #pac-input {
@@ -175,7 +206,7 @@ onMounted(() => {
 }
 
 .uv-info {
-  background: #ADD8BC;
+  background: #D4EEDD;
   padding: 15px;
   border-radius: 5px;
 }
