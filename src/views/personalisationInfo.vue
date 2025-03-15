@@ -1,3 +1,58 @@
+<script setup>
+import { ref, onMounted } from "vue";
+import axios from "axios";
+
+// Your WeatherAPI Key
+const API_KEY = "1d09352cb690453384720753251503";
+const CITY = "Melbourne";
+
+// Reactive properties
+const uvIndex = ref(null);
+const uvStatus = ref("Loading...");
+const uvDescription = ref("Fetching UV data...");
+
+// Function to fetch UV data
+const fetchUVIndex = async () => {
+  try {
+    const response = await axios.get(
+      `http://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${CITY}&aqi=no`
+    );
+
+    if (response.data && response.data.current) {
+      uvIndex.value = response.data.current.uv;
+      updateUVStatus(uvIndex.value);
+    }
+  } catch (error) {
+    console.error("Error fetching UV data:", error);
+    uvStatus.value = "Error";
+    uvDescription.value = "Unable to fetch UV data";
+  }
+};
+
+// Function to update UV status based on the index
+const updateUVStatus = (index) => {
+  if (index <= 2) {
+    uvStatus.value = "Low";
+    uvDescription.value = "Minimal protection required";
+  } else if (index <= 5) {
+    uvStatus.value = "Moderate";
+    uvDescription.value = "Use sunglasses, SPF 30+ sunscreen";
+  } else if (index <= 7) {
+    uvStatus.value = "High";
+    uvDescription.value = "Wear protective clothing, SPF 50+ sunscreen";
+  } else if (index <= 10) {
+    uvStatus.value = "Very High";
+    uvDescription.value = "Seek shade, wear sunglasses and sunscreen";
+  } else {
+    uvStatus.value = "Extreme";
+    uvDescription.value = "Avoid sun exposure, wear full protection";
+  }
+};
+
+// Fetch UV data when the component is mounted
+onMounted(fetchUVIndex);
+</script>
+
 <template>
   <div class="sun-safety-container">
     <!-- UV Index -->
@@ -8,14 +63,15 @@
       </div>
       <div class="uv-box-container">
         <div class="uv-box">
-          <p class="uv-number">10</p>
+          <p class="uv-number">{{ uvIndex !== null ? uvIndex : "..." }}</p>
         </div>
       </div>
       <div class="uv-status-box">
-        <span class="uv-status">Very High</span>
-        <p class="uv-description">Extra protection needed</p>
+        <span class="uv-status">{{ uvStatus }}</span>
+        <p class="uv-description">{{ uvDescription }}</p>
       </div>
     </div>
+
     <!-- Daily Sun Exposure Timeline -->
     <div class="sun-exposure">
       <h4>Daily Sun Exposure Timeline</h4>
@@ -34,6 +90,8 @@
     </div>
   </div>
 </template>
+
+
 
 <style scoped>
 /* Sun Safety Container */
