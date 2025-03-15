@@ -4,6 +4,7 @@ import { Loader } from '@googlemaps/js-api-loader';
 import Divider from '@/components/Divider.vue'
 import UvIndexRec from '@/components/UvIndexRec.vue'
 import { useRouter } from 'vue-router';
+import { isNull } from 'lodash';
 
 const router = useRouter();
 
@@ -17,9 +18,10 @@ const map = ref(null);
 async function fetchUV({ lat, lng }) {
   if (!lat || !lng) return null;
   try {
-    console.log("fetching UV...")
+    // console.log("fetching UV...")
     const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${lat},${lng}&aqi=yes`);
     const data = await response.json();
+    console.log(data)
     if (data && data["current"]["uv"] !== undefined) {
       location.value = data["location"]["name"]
       return data["current"]["uv"];
@@ -133,8 +135,9 @@ onMounted(() => {
           <div>Location: {{ location }}</div>
           <div>
             <span>UV index level: </span>
-            <span :class="{ highUV: userUV > 6 }"> {{ userUV ? userUV : "loading..." }} {{ userUV > 6 ?
-              "(High)" : "" }}</span>
+            <span :class="{ highUV: userUV > 6 }"> {{ isNull(userUV) ? "search the location you wanna check!" : userUV
+              }} {{ userUV > 6 ?
+                "(High)" : "" }}</span>
           </div>
           <div>Recommend Protection</div>
 
