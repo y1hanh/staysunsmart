@@ -10,6 +10,7 @@ const CITY = "Melbourne";
 const uvIndex = ref(null);
 const uvStatus = ref("Loading...");
 const uvDescription = ref("Fetching UV data...");
+const sunscreenAmount = ref("Calculating...");
 
 // Function to fetch UV data
 const fetchUVIndex = async () => {
@@ -47,6 +48,22 @@ const updateUVStatus = (index) => {
     uvStatus.value = "Extreme";
     uvDescription.value = "Avoid sun exposure, wear full protection";
   }
+  calculateSunscreen(index);
+};
+
+// Calculate sunscreen amount based on UV Index
+const calculateSunscreen = (uv) => {
+  let baseAmount = 36; // grams for full body (default)
+
+  if (uv <= 2) {
+    sunscreenAmount.value = `${baseAmount * 0.5}g `;
+  } else if (uv <= 5) {
+    sunscreenAmount.value = `${baseAmount}g `;
+  } else if (uv <= 7) {
+    sunscreenAmount.value = `${baseAmount * 1.5}g `;
+  } else {
+    sunscreenAmount.value = `${baseAmount * 2}g `;
+  }
 };
 
 // Fetch UV data when the component is mounted
@@ -69,6 +86,7 @@ onMounted(fetchUVIndex);
       <div class="uv-status-box">
         <span class="uv-status">{{ uvStatus }}</span>
         <p class="uv-description">{{ uvDescription }}</p>
+        <p class="sunscreen-amount">Recommended Sunscreen: {{ sunscreenAmount }}</p>
       </div>
     </div>
 
@@ -178,6 +196,12 @@ onMounted(fetchUVIndex);
 }
 
 .uv-description {
+  font-size: 1rem;
+  margin: 0;
+  font-weight: bold;
+}
+
+.sunscreen-amount {
   font-size: 1rem;
   margin: 0;
   font-weight: bold;

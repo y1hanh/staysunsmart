@@ -152,10 +152,6 @@ import UvBrandCard from '../components/UVClothing.vue';
           </div>
         </div>
       </div>
-
-
-
-
   </div>
 </template>
 
