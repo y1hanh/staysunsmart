@@ -1,11 +1,13 @@
 <script setup>
 import { RouterView } from 'vue-router'
 import BHeader from './components/icons/BHeader.vue' // Import navigation bar
+import Reminder from '@/components/Reminder.vue'
 </script>
 
 <template>
   <div class="layout">
     <BHeader />
+    <Reminder />
     <main>
       <RouterView />
     </main>
