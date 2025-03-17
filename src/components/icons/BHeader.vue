@@ -3,7 +3,7 @@
     <!-- Brand Name -->
     <div class="brand-name fs-2 fw-bolder" @click="() => router.push('/')">
       <span style="font-size: 1.3em; color: #2A3D66;">Stay</span>
-      <span style="font-size:1.0em;color: #F28C28;">&nbsp;&nbsp;SunSmart</span>
+      <span style="font-size:1.1em;color: #F28C28;">&nbsp;&nbsp;SunSmart</span>
     </div>
     <nav>
       <RouterLink active-class="activeRouter" to="/">Home</RouterLink>
@@ -54,6 +54,8 @@ nav {
   gap: 15px;
   align-self: flex-end;
   margin-right: 8%;
+  font-size: 1.1rem;
+  font-weight: 700;
 }
 
 /* Rounded Square Navigation Links */
@@ -66,7 +68,7 @@ nav a {
 nav a:hover {
   color: white;
   border: 2px solid transparent;
-  border-radius: 30px;
+  border-radius: 10px;
   display: inline-block;
   transition: 0.3s;
   background: #00ACDE;
@@ -75,7 +77,7 @@ nav a:hover {
 .activeRouter {
   color: white;
   border: 2px solid transparent;
-  border-radius: 30px;
+  border-radius: 10px;
   display: inline-block;
   transition: 0.3s;
   background: #00ACDE;
