@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import axios from "axios";
+import { yui } from "globals";
 
 // Your WeatherAPI Key
 const API_KEY = "1d09352cb690453384720753251503";
@@ -53,9 +54,12 @@ const updateUVStatus = (index) => {
 
 // Calculate sunscreen amount based on UV Index
 const calculateSunscreen = (uv) => {
-  let baseAmount = 36; // grams for full body (default)
-
-  if (uv <= 2) {
+  let baseAmount = 36;
+  if (uv === 0){
+    sunscreenAmount.value = "No need for sunscreen";
+    return;
+  }
+  if (1<= uv <= 2) {
     sunscreenAmount.value = `${baseAmount * 0.5}g `;
   } else if (uv <= 5) {
     sunscreenAmount.value = `${baseAmount}g `;
