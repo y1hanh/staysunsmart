@@ -99,7 +99,7 @@ Think about it like this—<b>UV damage is cumulative.</b> Every sunburn you get
     <li><b>Reapply sunscreen every two hours,</b> especially if swimming or sweating.</li>
   </ul><br>
 
- <b>Why this matters:</b>
+ <b>Why this matters:</b><br>
   The data is clear—<b>UV exposure is not just a summer issue, nor is it confined to certain regions.</b> Even locations with <b>lower seasonal UV levels</b> experience dangerous spikes throughout the year, and the increasing trend in UV intensity makes <b>long-term protection more critical than ever.</b>`
 ]);
 
@@ -262,7 +262,6 @@ onMounted(() => {
   border: none;
   display: flex;
 }
-
 </style>
 
 
