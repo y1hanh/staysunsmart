@@ -21,7 +21,6 @@ async function fetchUV({ lat, lng }) {
     // console.log("fetching UV...")
     const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${lat},${lng}&aqi=yes`);
     const data = await response.json();
-    console.log(data)
     if (data && data["current"]["uv"] !== undefined) {
       location.value = data["location"]["name"]
       return data["current"]["uv"];
@@ -53,6 +52,7 @@ async function initMap() {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
+      console.log("Your location is: ", pos);
       new Marker({
         position: pos,
         map: map.value,
