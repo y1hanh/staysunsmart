@@ -99,7 +99,7 @@ const goToPersonalisation = () => {
           <UvBrandCard
             title="Solbari"
             description="UPF 50+ sun hats, clothing and accessories for all your active adventures"
-            link="https://www.solbari.com.au/?gad_source=1&gclid=Cj0KCQjw4cS-BhDGARIsABg4_J2BCgdfQcb1OFi_4tYOxkso0UzSJbYm-KYvyKHsMv2ryVsBNC8MOOgaAn0gEALw_wcB"
+            link="https://www.solbari.com.au"
             linkText="www.uvskinz.com"
           />
         </div>
