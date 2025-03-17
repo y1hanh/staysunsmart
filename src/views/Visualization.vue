@@ -21,7 +21,7 @@ At first glance, this might seem reassuring—fewer deaths, better treatments. B
 
 Skin cancer isn’t something that happens overnight. It’s the result of years of accumulated UV exposure, and that’s where the second insight becomes crucial—<b>age matters more than we realize.</b>`,
 
-  `Not all skin cancers are the same. Some are more treatable, while others are far deadlier. The final visualization highlights a chilling fact—<b>melanoma accounts for 72% of all skin cancer deaths.</b><br><br>
+  `Not all skin cancers are the same. Some are more treatable, while others are far deadlier. The visualization highlights a chilling fact—<b>melanoma accounts for 72% of all skin cancer deaths.</b><br><br>
 
 Unlike other forms of skin cancer, melanoma is <b>fast-spreading, aggressive, and deadly</b> if not caught early. It’s also the type of skin cancer that affects younger people more frequently.<br><br>
 
