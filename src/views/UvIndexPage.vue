@@ -136,7 +136,7 @@ onMounted(() => {
           <div>
             <span>UV index level: </span>
             <span :class="{ highUV: userUV > 6 }"> {{ isNull(userUV) ? "search the location you wanna check!" : userUV
-            }} {{ userUV > 6 ?
+              }} {{ userUV > 6 ?
                 "(High)" : "" }}</span>
           </div>
           <div>Recommend Protection</div>
@@ -154,7 +154,8 @@ onMounted(() => {
     </div>
   </div>
   <div>
-    <iframe class="uv_visual_map" src="/uv_index_map.html" frameborder="0"></iframe>
+    <iframe class="uv_visual_map" src="https://staysunsmart.s3.us-east-1.amazonaws.com/uv_index_map.html"
+      frameborder="0"></iframe>
   </div>
 </template>
 
