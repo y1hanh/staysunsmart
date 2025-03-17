@@ -59,7 +59,7 @@ const calculateSunscreen = (uv) => {
     sunscreenAmount.value = "No need for sunscreen";
     return;
   }
-  if (1<= uv <= 2) {
+  if ( 0< uv <= 2) {
     sunscreenAmount.value = `${baseAmount * 0.5}g `;
   } else if (uv <= 5) {
     sunscreenAmount.value = `${baseAmount}g `;
