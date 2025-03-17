@@ -1,10 +1,16 @@
 <script setup>
-import { ref } from 'vue'
+import { useRouter } from 'vue-router';
 import uvImage from '../assets/image1.png';
 import uv2Image from '../assets/image2.png';
 import uv3Image from '../assets/image3.png';
 import uv4Image from '../assets/image4.png';
 import UvBrandCard from '../components/UVClothing.vue';
+
+const router = useRouter();
+
+const goToPersonalisation = () => {
+  router.push('/personalisation');
+};
 </script>
 
 <template>
@@ -26,8 +32,15 @@ import UvBrandCard from '../components/UVClothing.vue';
         <div class="image-content">
           <div class="text-link">Stay SunSmart: Simple Steps to Protect Your Skin.</div>
           <div class="button-container">
-            <button class="learn-more-btn">Learn More</button>
-            <button class="suggestion-btn">Get Personalized Suggestion</button>
+            <a href="https://www.cancer.org.au/cancer-information/causes-and-prevention/sun-safety/be-sunsmart"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="learn-more-btn">
+                Learn More
+            </a>
+            <router-link to="/personalisation" class="suggestion-btn">
+                Get Personalized Suggestion
+            </router-link>
           </div>
         </div>
       </div>
@@ -233,6 +246,7 @@ import UvBrandCard from '../components/UVClothing.vue';
   display: inline-block;
   font-family: "menlo", sans-serif;
   font-weight: bold;
+  text-decoration: none;
 }
 
 .learn-more-btn {
