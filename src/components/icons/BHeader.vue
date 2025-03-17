@@ -8,6 +8,7 @@
     <nav>
       <RouterLink active-class="activeRouter" to="/">Home</RouterLink>
       <RouterLink active-class="activeRouter" to="/uvindex">UV Index Check</RouterLink>
+      <RouterLink active-class="activeRouter" to="/visual">UV Impact</RouterLink>
       <RouterLink active-class="activeRouter" to="/clothing">Protect Your Skin</RouterLink>
       <RouterLink active-class="activeRouter" to="/personalisation">Personalized Sun Safety Schedule</RouterLink>
     </nav>

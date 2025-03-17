@@ -153,10 +153,6 @@ onMounted(() => {
       </div>
     </div>
   </div>
-  <div>
-    <iframe class="uv_visual_map" src="https://staysunsmart.s3.us-east-1.amazonaws.com/uv_index_map.html"
-      frameborder="0"></iframe>
-  </div>
 </template>
 
 <style scoped>
@@ -187,15 +183,6 @@ onMounted(() => {
   height: 100vh;
   font-family: Arial, sans-serif;
   margin: 0 5%;
-}
-
-.uv_visual_map {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 80%;
-  height: 500px;
-  border: none;
 }
 
 .map-container {

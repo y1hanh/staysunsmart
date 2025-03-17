@@ -170,18 +170,30 @@ onMounted(() => {
         <div class="col-12 image-container">
           <img :src="img_url" class="image-style" />
         </div>
-
         <!-- Description below the image (Only if description exists) -->
         <div v-if="formattedDescriptions.length > index" class="col-12 text-container">
           <p class="image-desc" v-html="formattedDescriptions[index]"></p>
+        </div>
+        <!-- Insert the map **before the last image** -->
+        <div v-if="index === img_urls.length - 2" class="col-12">
+          <h4 class="image-title">UV Exposure Trends Across Australian Cities (2019-2023)</h4>
+          <iframe class="uv_visual_map" src="https://staysunsmart.s3.us-east-1.amazonaws.com/uv_index_map.html"
+            frameborder="0"></iframe>
+            <p class="image-desc">
+              The invisible danger of UV radiation isn’t the same everywhere. While Australia as a whole faces extreme UV exposure, some cities experience higher, year-round intensity, making sun safety even more critical.
+              This visualization maps the average UV index values across 13 major Australian cities from 2019 to 2023, helping us understand where and when the risk is highest.<br><br>
+
+              ☀️ What this means for you:<br>
+              • In high-UV cities (e.g., Townsville, Brisbane) – Sun protection must be year-round as UV levels remain dangerously high, even in winter.<br>
+              • In cities with seasonal variation (e.g., Melbourne, Canberra, Adelaide) – Extra caution is needed between October and March, when UV levels peak.<br>
+              • For travelers – Check the UV index before visiting new regions; a mild summer in one city can be extreme elsewhere.
+            </p>
+
         </div>
 
       </div>
     </div>
 
-    <div v-else>
-      <p>Loading images...</p>
-    </div>
   </div>
 </template>
 
@@ -242,6 +254,15 @@ onMounted(() => {
   display: block;
   height: 1.5px;
 }
+
+.uv_visual_map {
+  padding: 10px 15px;
+  width: 100%;
+  height: 500px;
+  border: none;
+  display: flex;
+}
+
 </style>
 
 
