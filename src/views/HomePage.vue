@@ -1,16 +1,7 @@
 <script setup>
-import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 const router = useRouter();
-const img_urls = ref(null);
-async function getVisualization() {
-  const response = await fetch('https://t0fs66vtch.execute-api.us-east-1.amazonaws.com/test');
-  const { body } = await response.json();
-  img_urls.value = JSON.parse(body);
-}
-onMounted(() => {
-  getVisualization();
-});
+
 </script>
 
 <template>
@@ -24,15 +15,7 @@ onMounted(() => {
         <img class="home_page_img" src="@/assets/home_page_img3.png" />
       </div>
     </div>
-    <div v-if="img_urls">
-      <div class="row" v-for="(img_url, index) in img_urls" :key="index">
-        <div class="col-6 home_page_img_container">
-          <img class="home_page_img" :src="img_url" />
-        </div>
-        <div class="col-6 home_page_text_container">
-        </div>
-      </div>
-    </div>
+
     <div class="row">
       <div class="col-6 home_page_img_container">
         <img class="home_page_img" src="@/assets/home_page_img4.png" />
@@ -54,6 +37,10 @@ onMounted(() => {
           target="_blank" rel="noopener noreferrer" class="damage_btn">Learn more</a>
       </div>
     </div>
+    <button class="visualization-btn" @click="router.push('/visual')">
+  View Visualization
+</button>
+
   </div>
 </template>
 
