@@ -76,7 +76,7 @@ Think about it like this—<b>UV damage is cumulative.</b> Every sunburn you get
 
   <b>The concerning trend?</b> UV levels appear to be increasing over time, possibly due to <b>climate change and atmospheric shifts.</b> This means that the risk of <b>UV-related skin damage and skin cancer</b> is only growing, reinforcing the need for <b>consistent sun protection habits.</b><br><br>
 
-<b>Here’s how to protect yourself based on where you live and when you’re outdoors:</b>
+<b>Here’s how to protect yourself based on where you live and when you’re outdoors:</b><br>
 
   📍 <b>If you live in high-UV cities like Darwin, Townsville, or Brisbane:</b>
   <ul>
