@@ -136,7 +136,7 @@ onMounted(() => {
           <div>
             <span>UV index level: </span>
             <span :class="{ highUV: userUV > 6 }"> {{ isNull(userUV) ? "search the location you wanna check!" : userUV
-              }} {{ userUV > 6 ?
+            }} {{ userUV > 6 ?
                 "(High)" : "" }}</span>
           </div>
           <div>Recommend Protection</div>
@@ -152,6 +152,9 @@ onMounted(() => {
         <div id="map"></div>
       </div>
     </div>
+  </div>
+  <div>
+    <iframe class="uv_visual_map" src="/uv_index_map.html" frameborder="0"></iframe>
   </div>
 </template>
 
@@ -183,6 +186,15 @@ onMounted(() => {
   height: 100vh;
   font-family: Arial, sans-serif;
   margin: 0 5%;
+}
+
+.uv_visual_map {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 500px;
+  border: none;
 }
 
 .map-container {
