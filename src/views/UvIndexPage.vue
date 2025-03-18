@@ -7,8 +7,6 @@ import { useRouter } from 'vue-router';
 import { isNull } from 'lodash';
 
 const router = useRouter();
-
-const API_KEY = "0f2ce572252f4ef9ba455535251103"
 const melbourne = { lat: -37.8136, lng: 144.9631 }
 const currentLocation = ref(null);
 const location = ref(null);
@@ -18,12 +16,12 @@ const map = ref(null);
 async function fetchUV({ lat, lng }) {
   if (!lat || !lng) return null;
   try {
-    // console.log("fetching UV...")
-    const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${lat},${lng}&aqi=yes`);
-    const data = await response.json();
-    if (data && data["current"]["uv"] !== undefined) {
-      location.value = data["location"]["name"]
-      return data["current"]["uv"];
+    const response = await fetch(`https://rwmg3sance.execute-api.us-east-1.amazonaws.com/prod/get-weather?lat=${lat}&lon=${lng}`);
+    let { body } = await response.json();
+    body = JSON.parse(body);
+    if (body && body["current"]["uv"] !== undefined) {
+      location.value = body["location"]["name"]
+      return body["current"]["uv"];
     }
   } catch (error) {
     console.error("Error fetching UV data:", error);
@@ -136,7 +134,7 @@ onMounted(() => {
           <div>
             <span>UV index level: </span>
             <span :class="{ highUV: userUV > 6 }"> {{ isNull(userUV) ? "search the location you wanna check!" : userUV
-              }} {{ userUV > 6 ?
+            }} {{ userUV > 6 ?
                 "(High)" : "" }}</span>
           </div>
           <div>Recommend Protection</div>

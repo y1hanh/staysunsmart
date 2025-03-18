@@ -3,8 +3,6 @@ import { ref, onMounted } from "vue";
 import axios from "axios";
 import { yui } from "globals";
 
-// Your WeatherAPI Key
-const API_KEY = "1d09352cb690453384720753251503";
 const CITY = "Melbourne";
 
 // Reactive properties
@@ -16,12 +14,13 @@ const sunscreenAmount = ref("Calculating...");
 // Function to fetch UV data
 const fetchUVIndex = async () => {
   try {
-    const response = await axios.get(
-      `http://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${CITY}&aqi=no`
+    const response = await fetch(
+      `https://rwmg3sance.execute-api.us-east-1.amazonaws.com/prod/get-weather?lat=-37.8136&lon=144.9631`
     );
-
-    if (response.data && response.data.current) {
-      uvIndex.value = response.data.current.uv;
+    let { body } = await response.json();
+    body = JSON.parse(body);
+    if (body && body.current) {
+      uvIndex.value = body.current.uv;
       updateUVStatus(uvIndex.value);
     }
   } catch (error) {
@@ -55,11 +54,11 @@ const updateUVStatus = (index) => {
 // Calculate sunscreen amount based on UV Index
 const calculateSunscreen = (uv) => {
   let baseAmount = 36;
-  if (uv === 0){
+  if (uv === 0) {
     sunscreenAmount.value = "No need for sunscreen";
     return;
   }
-  if ( 0< uv <= 2) {
+  if (0 < uv <= 2) {
     sunscreenAmount.value = `${baseAmount * 0.5}g `;
   } else if (uv <= 5) {
     sunscreenAmount.value = `${baseAmount}g `;
@@ -135,7 +134,8 @@ onMounted(fetchUVIndex);
 
 /* UV Text Box */
 .uv-text-box {
-  background: #5C6BC0; /* Keep original color */
+  background: #5C6BC0;
+  /* Keep original color */
   padding: 8px;
   border-radius: 15px;
   text-align: center;
@@ -143,9 +143,11 @@ onMounted(fetchUVIndex);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 80px; /* Ensures same height */
+  min-height: 80px;
+  /* Ensures same height */
   flex: 1;
 }
+
 .uv-text {
   font-size: 1rem;
   margin: 0;
@@ -160,6 +162,7 @@ onMounted(fetchUVIndex);
   flex: 1;
   min-height: 80px;
 }
+
 .uv-box {
   background: #E57373;
   color: black;
@@ -181,7 +184,8 @@ onMounted(fetchUVIndex);
 
 /* UV Status Box */
 .uv-status-box {
-  background: #7986CB; /* Different color */
+  background: #7986CB;
+  /* Different color */
   padding: 8px;
   border-radius: 15px;
   text-align: center;
@@ -189,13 +193,14 @@ onMounted(fetchUVIndex);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 80px; /* Ensures same height */
+  min-height: 80px;
+  /* Ensures same height */
   flex: 1;
 }
 
 .uv-status {
   font-size: 1rem;
-  color:white;
+  color: white;
   font-weight: bold;
 }
 
@@ -215,31 +220,39 @@ onMounted(fetchUVIndex);
 .sun-exposure {
   margin-top: 20px;
 }
-.timeline span{
-  font-size: 0.8rem; /* Decrease text size */
-  padding: 3px 85px; /* Reduce padding to make it smaller */
+
+.timeline span {
+  font-size: 0.8rem;
+  /* Decrease text size */
+  padding: 3px 85px;
+  /* Reduce padding to make it smaller */
   border-radius: 1px;
 }
+
 .safe {
   background: #A5D6A7;
   padding: 5px;
   border-radius: 5px;
 }
+
 .caution {
   background: #FFCC80;
   padding: 5px;
   border-radius: 5px;
 }
+
 .high-risk {
   background: #FFAB91;
   padding: 5px;
   border-radius: 5px;
 }
+
 .legend {
   display: flex;
   gap: 10px;
   margin-top: 10px;
 }
+
 .safe-box {
   display: flex;
   align-items: center;
@@ -293,6 +306,4 @@ onMounted(fetchUVIndex);
   border-radius: 50%;
   background-color: #FFAB91;
 }
-
-
 </style>
