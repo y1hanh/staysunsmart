@@ -3,7 +3,7 @@ import personalisation from '../views/Personalisation.vue'
 import clothing from '../views/Clothing.vue'
 import UvIndexPage from '@/views/UvIndexPage.vue'
 import HomePage from '@/views/HomePage.vue'
-import visual from '../views/Visualization.vue'
+import visual from '../views/Visuals.vue'
 
 const routes = [
   { path: '/', component: HomePage },
