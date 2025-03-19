@@ -2,48 +2,55 @@
 import { ref } from 'vue';
 
 const items = ref([]);
+
 const description = ref({
   "image_url_1": {
-    title: "descirption 1",
-    description: "descirption 1"
+    title: "A Growing Epidemic: More Cases, More Risk",
+    description: "Skin cancer diagnoses have skyrocketed over the past decades, as seen in the blue incidence line. The red mortality line remains stable, thanks to better treatments, but the danger isn’t fading.\n\nFor every 10,000 new cases, approximately 1,100 additional deaths occur. Why rely on treatment when prevention is in our hands? Skin cancer is a slow build-up of UV damage—and the next insight shows why early protection matters."
   },
   "image_url_2": {
-    title: "descirption 2",
-    description: "descirption 2"
+    title: "Melanoma: The Most Dangerous Type of Skin Cancer",
+    description: "Not all skin cancers are the same. Melanoma is responsible for 72% of skin cancer deaths, making it the most aggressive and deadliest form.\n\n✅ Know the ABCDE rule (Asymmetry, Border, Color, Diameter, Evolution) to identify dangerous moles.\n✅ Get annual skin checks—early detection saves lives.\n✅ Avoid tanning beds—they increase melanoma risk significantly.\n✅ Reapply sunscreen frequently—once in the morning is not enough.\n\nBut melanoma isn’t just an issue for older adults—it starts much earlier than you think."
   },
   "image_url_3": {
-    title: "descirption 1",
-    description: "descirption 1"
+    title: "Why What You Do Now Determines Your Future Risk",
+    description: "Many believe skin cancer is a problem for older generations, but the damage starts young. Every sunburn increases your lifetime risk, with effects surfacing years later.\n\n🔹 Early sun protection reduces long-term risks.\n🔹 DNA damage happens before visible signs appear.\n🔹 Preventative habits today prevent skin cancer tomorrow.\n\nSo how do you adjust your habits based on location and environment?"
   },
   "image_url_4": {
-    title: "descirption 1",
-    description: "descirption 1"
+    title: "Are You Traveling to a High-Risk UV Zone? Here’s What You Need to Know",
+    description: "While Australia faces high UV exposure nationwide, Queensland and New South Wales have the highest skin cancer rates due to extreme sun intensity.\n\nIf you live or travel to high-risk areas, take extra precautions:\n\n✅ Check the UV index before heading outdoors.\n✅ Pack essentials—sunscreen, hats, sunglasses, and UV-protective clothing.\n✅ Avoid peak sun hours (10 AM - 4 PM).\n✅ Reapply sunscreen every two hours, especially after swimming.\n\nUnderstanding where and when UV exposure is highest allows you to adapt and protect yourself."
   },
   "image_url_5": {
-    title: "descirption 1",
-    description: "descirption 1"
-  },
-})
+    title: "Understanding Year-Wise Monthly UV Index Trends Across Australian Cities",
+    description: "UV levels fluctuate across seasons and cities, with northern regions like Darwin and Townsville experiencing high UV exposure year-round.\n\n🔹 Summer (Dec-Feb) sees extreme UV levels across Australia.\n🔹 Winter (Jun-Aug) lowers UV intensity in southern cities, but exposure remains dangerous.\n🔹 Long-term UV levels are rising, increasing overall risk.\n\nLocation-based sun safety tips:\n\n📍 High-UV cities (e.g., Darwin, Townsville, Brisbane) → Sun protection is a daily necessity.\n🌆 Seasonal UV cities (e.g., Melbourne, Canberra, Adelaide) → Take extra care from October to March.\n🏖️ Travelers → Know the UV index before visiting a new location.\n\nThe visualization reinforces an important message: UV exposure is unavoidable, but protection is always within our control."
+  }
+});
+
 async function getVisualization() {
   try {
     const response = await fetch('https://t0fs66vtch.execute-api.us-east-1.amazonaws.com/test');
     const { body } = await response.json();
-    let parsedData;
-    parsedData = JSON.parse(body);
+    let parsedData = JSON.parse(body);
+
+    let tempItems = [];
     for (const [key, value] of Object.entries(parsedData)) {
       const text = description.value[key];
-      items.value.push({
+      tempItems.push({
         image: value,
         text: text
       });
     }
 
-  }
-  catch (error) {
+    const order = [4, 3, 1, 2, 5];
+
+    items.value = order.map(index => tempItems[index - 1]);
+
+  } catch (error) {
     console.error("Error fetching visualization data:", error);
   }
 }
-getVisualization()
+getVisualization();
+
 </script>
 <template>
   <div class="container">
@@ -52,7 +59,7 @@ getVisualization()
         <img :src="item.image" alt="Image" class="image" />
         <div class="text">
           <h3>{{ item.text.title }}</h3>
-          <p>{{ item.text.description }}</p>
+          <p v-html="item.text.description.replace(/\n/g, '<br>')"></p>
         </div>
       </div>
     </div>
@@ -76,6 +83,7 @@ getVisualization()
   display: flex;
   align-items: center;
   width: 100%;
+  margin-top: 30px;
 }
 
 .content.reverse {
@@ -91,6 +99,6 @@ getVisualization()
 .text {
   width: 50%;
   font-size: 16px;
-  text-align: center;
+  text-align: left;
 }
 </style>
