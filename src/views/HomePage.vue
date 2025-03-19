@@ -18,6 +18,7 @@ const router = useRouter();
 
     <div class="row">
       <div class="col-6 home_page_img_container">
+        <button class="check_out_btn" @click="router.push('/uvindex')">UV Index Check</button>
         <img class="home_page_img" src="@/assets/home_page_img4.png" />
       </div>
       <div class="col-6 home_page_img_container">
@@ -33,7 +34,7 @@ const router = useRouter();
         <div class="fw-bold " style="font-size: 2rem; color: white;"> UV impacts to your skin</div>
         <div class="text-desc" style="font-size: 1.5rem; color: white;"> UV radiation damages the DNA in skin cells
           leading to muttations that increase skin cancer risk.</div>
-          <button class="damage_btn" @click="router.push('/visual')">Learn more</button>
+        <button class="damage_btn" @click="router.push('/visual')">Learn more</button>
       </div>
     </div>
   </div>
@@ -64,7 +65,7 @@ const router = useRouter();
   bottom: 8%;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #007AFF;
+  background-color: #00ACDE;
   color: white;
   padding: 10px 15px;
   border: none;
@@ -79,7 +80,7 @@ const router = useRouter();
 
 .damage_btn {
   background-color: white;
-  color: #61ABBE;
+  color: #00ACDE;
   padding: 10px 15px;
   border: none;
   border-radius: 8px;
