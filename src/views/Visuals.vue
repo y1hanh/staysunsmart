@@ -13,7 +13,7 @@ const description = ref({
     description: "Not all skin cancers are the same. Melanoma is responsible for 72% of skin cancer deaths, making it the most aggressive and deadliest form.\n\n✅ Know the ABCDE rule (Asymmetry, Border, Color, Diameter, Evolution) to identify dangerous moles.\n✅ Get annual skin checks—early detection saves lives.\n✅ Avoid tanning beds—they increase melanoma risk significantly.\n✅ Reapply sunscreen frequently—once in the morning is not enough.\n\nBut melanoma isn’t just an issue for older adults—it starts much earlier than you think."
   },
   "image_url_1": {
-    title: "Why What You Do Now Determines Your Future Risk",
+    title: "Determines Your Future Risk",
     description: "Many believe skin cancer is a problem for older generations, but the damage starts young. Every sunburn increases your lifetime risk, with effects surfacing years later.\n\n🔹 Early sun protection reduces long-term risks.\n🔹 DNA damage happens before visible signs appear.\n🔹 Preventative habits today prevent skin cancer tomorrow.\n\nSo how do you adjust your habits based on location and environment?"
   },
   "image_url_2": {
@@ -53,6 +53,19 @@ getVisualization();
 </script>
 <template>
   <div class="container">
+    <div class="map-container">
+      <div class="map-description">
+        <h2>🌞 UV Index Map</h2>
+        <p>This map provides real-time UV index data to help you stay safe from excessive sun exposure.
+          Use this information to plan outdoor activities and protect your skin.</p>
+      </div>
+      <div class="iframe-container">
+        <iframe class="uv_visual_map" src="https://staysunsmart.s3.us-east-1.amazonaws.com/uv_index_map.html"
+          frameborder="0">
+        </iframe>
+      </div>
+    </div>
+
     <div v-for="(item, index) in items" :key="index" class="row">
       <div class="content" :class="{ 'reverse': index % 2 !== 0 }">
         <img :src="item.image" alt="Image" class="image" />
@@ -70,6 +83,7 @@ getVisualization();
   flex-direction: column;
   gap: 20px;
   margin: auto;
+  font-size: larger;
 }
 
 .row {
@@ -97,10 +111,53 @@ getVisualization();
 
 .text {
   width: 50%;
-  font-size: 16px;
+  font-size: 18px;
   text-align: left;
-  white-space: normal; /* Ensures text wraps properly */
-  line-height: 1.5; /* Adjusts spacing between lines */
+  white-space: normal;
+  line-height: 1.8;
   margin-bottom: 8px;
+}
+
+.map-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.map-description {
+  max-width: 80%;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.map-description h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #61ABBE;
+}
+
+.iframe-container {
+  width: 80%;
+  height: 500px;
+  overflow: hidden;
+  position: relative;
+}
+
+.uv_visual_map {
+  transform: scale(0.8);
+  transform-origin: top left;
+  width: 120%;
+  height: 125%;
+  border: none;
+  position: absolute;
+  top: 10;
+  left: 0;
+  display: block;
 }
 </style>
