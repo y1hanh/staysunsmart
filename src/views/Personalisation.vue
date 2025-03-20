@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from "vue";
 import PersonalisationInfo from "../views/personalisationInfo.vue";
+import skin from "../assets/skin.png";
+
 
 /* Define an array of skin types with their recommended protection */
 const skinTypes = ref([
@@ -87,6 +89,7 @@ const getSelectedSkin = () => {
 
         <div class="dropdown-container">
             <label for="skinType" class="dropdown-label">Select Your Skin Type:</label>
+            <img :src="skin" alt="Skin Type" class="skin-image" />
             <select id="skinType" class="styled-dropdown" v-model="selectedSkin">
               <option value="" disabled selected>Click here to select your skin type..</option>
               <option v-for="skin in skinTypes" :key="skin.value" :value="skin.value">
@@ -344,6 +347,13 @@ const getSelectedSkin = () => {
 .safety-measures {
   background: #E0F2F1;
   border-left: 5px solid #56B9B0;
+}
+
+.skin-image {
+  width: 100%;
+  max-width: 400px;
+  height: 150px;
+  margin-top: 20px;
 }
 </style>
 
