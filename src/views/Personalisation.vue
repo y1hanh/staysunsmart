@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import PersonalisationInfo from "../views/personalisationInfo.vue";
-import skin from "../assets/skin.png";
+import skin from "../assets/skin1.png";
 
 
 /* Define an array of skin types with their recommended protection */
