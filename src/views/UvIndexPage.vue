@@ -7,6 +7,8 @@ import { useRouter } from 'vue-router';
 import { isNull } from 'lodash';
 
 const router = useRouter();
+
+const API_KEY = "90df9ab8bfc64b28b0e02953251803"
 const melbourne = { lat: -37.8136, lng: 144.9631 }
 const currentLocation = ref(null);
 const location = ref(null);
@@ -16,12 +18,13 @@ const map = ref(null);
 async function fetchUV({ lat, lng }) {
   if (!lat || !lng) return null;
   try {
-    const response = await fetch(`https://rwmg3sance.execute-api.us-east-1.amazonaws.com/prod/get-weather?lat=${lat}&lon=${lng}`);
-    let { body } = await response.json();
-    body = JSON.parse(body);
-    if (body && body["current"]["uv"] !== undefined) {
-      location.value = body["location"]["name"]
-      return body["current"]["uv"];
+    // console.log("fetching UV...")
+    const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${lat},${lng}&aqi=yes`);
+    const data = await response.json();
+    console.log(data)
+    if (data && data["current"]["uv"] !== undefined) {
+      location.value = data["location"]["name"]
+      return data["current"]["uv"];
     }
   } catch (error) {
     console.error("Error fetching UV data:", error);
@@ -50,7 +53,6 @@ async function initMap() {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
-      console.log("Your location is: ", pos);
       new Marker({
         position: pos,
         map: map.value,
@@ -151,6 +153,10 @@ onMounted(() => {
       </div>
     </div>
   </div>
+  <div>
+    <iframe class="uv_visual_map" src="https://staysunsmart.s3.us-east-1.amazonaws.com/uv_index_map.html"
+      frameborder="0"></iframe>
+  </div>
 </template>
 
 <style scoped>
@@ -181,6 +187,15 @@ onMounted(() => {
   height: 100vh;
   font-family: Arial, sans-serif;
   margin: 0 5%;
+}
+
+.uv_visual_map {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 500px;
+  border: none;
 }
 
 .map-container {
